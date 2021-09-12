@@ -138,8 +138,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 CART_SESSION_ID = 'cart'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale/'),)
 
-
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'luccamdo@gmail.com'
+EMAIL_HOST_PASSWORD = 'Hieu0982538412'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

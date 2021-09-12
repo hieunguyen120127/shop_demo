@@ -82,8 +82,11 @@ WSGI_APPLICATION = 'djangoProject_demo_SHOP.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'hieu',
+        'USER': 'root',
+        'PASSWORD': '123456',
+        'HOST': 'localhost'
     }
 }
 
@@ -138,12 +141,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 CART_SESSION_ID = 'cart'
 
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale/'),)
 
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'luccamdo@gmail.com'
-EMAIL_HOST_PASSWORD = 'Hieu0982538412'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+if not DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_HOST_USER = 'luccamdo@gmail.com'
+    EMAIL_HOST_PASSWORD = 'Hieu0982538412'
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

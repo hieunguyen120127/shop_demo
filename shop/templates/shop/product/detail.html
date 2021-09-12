@@ -1,3 +1,4 @@
+
 {% extends "shop/base.html" %}
 {% load static %}
 
@@ -17,11 +18,11 @@
 			{{ product.category }}
 		</a>
 	</h2>
-	<p class="price">{{ product.price }} VND</p>
+	<p class="price">{{ product.price}} VND / 0.5kg </p>
 	<form action="{% url "cart:cart_add" product.id %}" method="post">
 		{{ cart_product_form }}
 		{% csrf_token %}
-		<input type="submit" value="Add to cart">
+		<input type="submit" value="Thêm vào giỏ hàng">
 	</form>
 	{{ product.description|linebreaks }}
 	</div>

@@ -81,12 +81,18 @@ WSGI_APPLICATION = 'djangoProject_demo_SHOP.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'default':
+        {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    },
+#    'new': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'hieu',
         'USER': 'root',
         'PASSWORD': '123456',
-        'HOST': 'localhost'
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 

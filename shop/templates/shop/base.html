@@ -4,26 +4,26 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>{% block title %}My shop{% endblock %}</title>
+<title>{% block title %}Vựa rau củ quả Thái Hiệp{% endblock %}</title>
 <link href="{% static "css/base.css" %}" rel="stylesheet">
 </head>
 <body>
 	<div id="header">
-		<a href="/" class="logo">My shop</a>
+		<a href="/" class="logo">Vựa rau củ quả Thái Hiệp</a>
 	</div>
 	<div id="subheader">
 		<div class="cart">
-			{% with total_items=cart|length %}
-				{% if total_items > 0 %}
-					Your cart:
+
+				{% if cart != 0 %}
+					Giỏ hàng:
 					<a href="{% url "cart:cart_detail" %}">
-					{{ total_items }} item{{ total_items|pluralize }},
+						{{ cart.get_total_quantity }} kg ,
 						{{ cart.get_total_price }} VND
 					</a>
 				{% else %}
-					Your cart is empty.
+					Giỏ hàng đang trống.
 				{% endif %}
-			{% endwith %}
+
 		</div>
 	</div>
 	<div id="content">

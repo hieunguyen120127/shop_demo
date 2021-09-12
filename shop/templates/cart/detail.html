@@ -2,20 +2,20 @@
 {% load static %}
 
 {% block title %}
-Your shopping cart
+Giỏ hàng của bạn
 {% endblock %}
 
 {% block content %}
-	<h1>Your shopping cart</h1>
+	<h1>Giỏ hàng</h1>
 	<table class="cart" >
 		<thead>
 			<tr >
-				<th>Image</th>
-				<th>Product</th>
-				<th>Quantity</th>
-				<th>Remove</th>
-				<th>Unit price</th>
-				<th>Price</th>
+				<th>Hình ảnh</th>
+				<th>Sản phẩm</th>
+				<th>Số lượng</th>
+				<th>Giá</th>
+				<th>Tổng khối lượng</th>
+				<th>Thành tiền</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -35,32 +35,32 @@ Your shopping cart
 					<td>{{ product.name }}</td>
 					<td>
 						<form action="{% url "cart:cart_add" product.id %}" method="post">
-							{{ item.update_quantity_form.quantity }}
+							{{ item.update_quantity_form.quantity }} x 0.5kg = <strong>{{ item.total_quantity }}kg</strong>
 							{{ item.update_quantity_form.override }}
-							<input type="submit" value="Update">
+							<input type="submit" value="Cập nhật">
 							{% csrf_token %}
 						</form>
-					</td>
-					<td>
 						<form action="{% url "cart:cart_remove" product.id %}" method="post">
-							<input type="submit" value="Remove">
+							<input type="submit" value="Xóa">
 							{% csrf_token %}
 						</form>
 					</td>
 					<td class="num">{{ item.price }} VND</td>
+					<td class="num">{{item.total_quantity  }} kg</td>
 					<td class="num">{{ item.total_price }} VND</td>
 				</tr>
 				{% endwith %}
 			{% endfor %}
 				<tr class="total">
-					<td>Total</td>
-					<td colspan="4"></td>
+					<td>Thành tiền</td>
+					<td colspan="3"></td>
+					<td class="num">{{ cart.get_total_quantity  }} kg</td>
 					<td class="num">{{ cart.get_total_price }} VND</td>
 				</tr>
 		</tbody>
 	</table>
 	<p class="text-right">
-		<a href="{% url "shop:product_list" %}" class="button light">Continue shopping</a>
-		<a href="{% url "orders:order_create" %}"  class="button">Checkout</a>
+		<a href="{% url "shop:product_list" %}" class="button light">Tiếp tục mua sắm</a>
+		<a href="{% url "orders:order_create" %}"  class="button">Đặt hàng</a>
 	</p>
 {% endblock %}

@@ -32,7 +32,7 @@ class Product(models.Model):
 	image = models.ImageField(upload_to='products/%Y/%m/%d',
 		blank=True)
 	description = models.TextField(blank=True)
-	price = models.FloatField(max_length='', default='')
+	price = models.IntegerField(default=0)
 	available = models.BooleanField(default=True)
 	created = models.DateTimeField(auto_now_add=True)
 	updated = models.DateTimeField(auto_now=True)

@@ -1,1 +1,1 @@
-web:gunicorn djangoProject_hedemo_SHOP.wsgi:application --log-file -
+web: gunicorn djangoProject_hedemo_SHOP.wsgiheroku config:set WEB_CONCURRENCY=3 --log-file -

@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-i4j^055s6%v&yekw$9f%!uc@k*(srfcu-n_f5v_3l17bnb30g=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -138,6 +138,12 @@ USE_TZ = True
 
 STATIC_URL = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_ROOT = 'static'
+
+MIDDLEWARE_CLASSES = (
+    # Simplified static file serving.
+    # https://warehouse.python.org/project/whitenoise/
+    'whitenoise.middleware.WhiteNoiseMiddleware',)
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

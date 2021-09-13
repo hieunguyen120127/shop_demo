@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 from django.utils.translation import gettext_lazy as _
 import django_heroku
+import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -93,6 +94,7 @@ DATABASES = {
         'PASSWORD': '123456',
         'HOST': 'localhost',
         'PORT': '3306',
+        'CONN_MAX_AGE': 500
     }
 }
 
@@ -165,3 +167,5 @@ else:
 # Activate Django-Heroku.
 django_heroku.settings(locals())
 
+
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)

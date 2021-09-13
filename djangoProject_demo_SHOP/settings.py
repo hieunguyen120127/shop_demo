@@ -45,6 +45,7 @@ INSTALLED_APPS = ['shop',
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -140,7 +141,6 @@ USE_TZ = True
 STATIC_URL = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_ROOT = 'static'
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
